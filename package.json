@@ -8,7 +8,7 @@
     "url": "https://github.com/alexeyBityukov/react-express-starter-kit"
   },
   "scripts": {
-    "start-server": "node server/src/server.js",
+    "start-server": "cd client && yarn build && cd ../ && nodemon server/src/server.js",
     "start-client": "cd client && yarn start"
   }
 }
