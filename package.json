@@ -1,0 +1,14 @@
+{
+  "name": "react-express-starter-kit-server",
+  "version": "0.1.0",
+  "description": "Light React-express personal starter kit",
+  "author": "alex.bityuckov@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexeyBityukov/react-express-starter-kit"
+  },
+  "scripts": {
+    "start-server": "node server/src/server.js",
+    "start-client": "cd client && yarn start"
+  }
+}
