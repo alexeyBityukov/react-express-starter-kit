@@ -1,0 +1,14 @@
+{
+  "name": "react-express-starter-kit-server",
+  "version": "0.0.1",
+  "description": "Light React-express personal starter kit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alex.bityuckov@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
