@@ -1,5 +1,8 @@
-# React express starter kit
-## Mongo
+# Курсовая работа на тему создание сайта. 
+
+- [Макет](http://psd-html-css.ru/templates/startup-besplatnyy-psd-shablon-lendinga)
+
+### Mongo
 Install mongo on OSX via [brew](https://brew.sh)
 
     brew install mongo
@@ -18,3 +21,6 @@ Open mongo shell ( only after start mongo server! )
 - Products
 - Orders
 - ProductsComments
+
+### Client
+[*Филатова Алена*](https://vk.com/alenafilatowa)
