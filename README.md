@@ -2,6 +2,7 @@
 
 - [Макет](http://psd-html-css.ru/templates/startup-besplatnyy-psd-shablon-lendinga)
 
+<<<<<<< HEAD
 ### Mongo
 Install mongo on OSX via [brew](https://brew.sh)
 
@@ -24,3 +25,7 @@ Open mongo shell ( only after start mongo server! )
 
 ### Client
 [*Филатова Алена*](https://vk.com/alenafilatowa)
+=======
+### Заказчик
+[*Филатова Алена*](https://vk.com/alenafilatowa)
+>>>>>>> Fixed typo
