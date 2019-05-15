@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 const path = require('path');
+require('./connectToDB');
 
 const port = 5000;
+
+
 
 app.get('/api', function (req, res) {
     res.send('Hello World!');
