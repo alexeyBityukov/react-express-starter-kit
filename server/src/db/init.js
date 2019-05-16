@@ -3,9 +3,6 @@ const mongoose = require('mongoose');
 const init = function() {
     const User = require('./models/user');
     const ShippingAddress = require('./models/shippingAddress');
-    const Product = require('./models/product');
-    const ProductComment = require('./models/productComment');
-    const Order = require('./models/order');
 
     const mainCommentatorShippingAddress = new ShippingAddress({
         _id: new mongoose.Types.ObjectId(),
@@ -50,35 +47,3 @@ const init = function() {
 };
 
 module.exports = init;
-// jamieAuthor.save(function(err) {
-//     if (err) throw err;
-//
-//     console.log('Author successfully saved.');
-//
-//     const mvcBook = new Book({
-//         _id: new mongoose.Types.ObjectId(),
-//             title: 'ASP.NET MVC 5 with Bootstrap and Knockout.js',
-//             author: jamieAuthor._id,
-//             ratings:[{
-//             summary: 'Great read'
-//         }]
-//     });
-//
-//     mvcBook.save(function(err) {
-//         if (err) throw err;
-//
-//         console.log('Book successfully saved.');
-//     });
-//
-//     const knockoutBook = new Book({
-//         _id: new mongoose.Types.ObjectId(),
-//             title: 'Knockout.js: Building Dynamic Client-Side Web Applications',
-//             author: jamieAuthor._id
-//     });
-//
-//     knockoutBook.save(function(err) {
-//         if (err) throw err;
-//
-//         console.log('Book successfully saved.');
-//     });
-// });
