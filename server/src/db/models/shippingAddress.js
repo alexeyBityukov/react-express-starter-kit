@@ -9,10 +9,10 @@ const shippingAddressSchema = mongoose.Schema({
     house: String,
     flat: String,
     postCode: String,
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     created: {
         type: Date,
         default: Date.now

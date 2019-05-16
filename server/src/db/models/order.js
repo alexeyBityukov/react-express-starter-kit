@@ -14,7 +14,8 @@ const orderSchema = mongoose.Schema({
     shippingAddress: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'ShippingAddress',
-    }
+    },
+    status: String,
 });
 
 const Order = mongoose.model('Author', orderSchema);
