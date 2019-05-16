@@ -12,7 +12,7 @@ Start mongo server
     mongod
    
 Open mongo shell ( only after start mongo server! )
-    
+
     mongo   
     
 #### Collections
