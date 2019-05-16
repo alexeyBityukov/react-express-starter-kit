@@ -10,5 +10,11 @@ Start mongo server
    
 Open mongo shell ( only after start mongo server! )
     
-    mongo    
-        
+    mongo   
+    
+#### Collections
+- Users
+- ShippingAddress
+- Products
+- Orders
+- ProductsComments
