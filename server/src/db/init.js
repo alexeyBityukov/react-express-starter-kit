@@ -27,15 +27,12 @@ const init = function() {
         shippingAddress: mainCommentatorShippingAddress._id
     });
 
+    mainCommentatorShippingAddress.user = mainCommentator._id;
+
     mainCommentatorShippingAddress.save(errorHandler(saveMainCommentator));
 
     function saveMainCommentator() {
-        mainCommentator.save(errorHandler(updateMainCommentatorShippingAddress));
-    }
-
-    function updateMainCommentatorShippingAddress() {
-        mainCommentatorShippingAddress.user = mainCommentator._id;
-        mainCommentatorShippingAddress.save(errorHandler(function(){console.log('Everything is ok!')}));
+        mainCommentator.save(errorHandler(function(){console.log('Everything is ok!')}));
     }
 
     function errorHandler(callback) {
