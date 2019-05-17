@@ -7,8 +7,10 @@ const orderSchema = mongoose.Schema({
         ref: 'User'
     },
     products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+        },
         count: Number,
     }],
     shippingAddress: {
