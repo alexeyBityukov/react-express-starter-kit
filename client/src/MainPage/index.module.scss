@@ -1,33 +1,66 @@
-.App {
-    text-align: center;
-}
+@import '../static/styles/colors.module';
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
-}
+.root {
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
+    .top {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+        background-image: url('../static/images/MainPage/top.jpg');
+        background-size: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        line-height: normal;
+        font-weight: normal;
+        font-family: sans-serif;
+        color: $text;
 
-.App-link {
-    color: #61dafb;
-}
+        .client {
+            position: absolute;
+            left: 50px;
+            top: 25px;
+            font-size: 24px;
+            font-weight: bold;
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+            a {
+                text-decoration: none;
+                color: $text;
+            }
+
+            a:hover {
+                color: $textHover;
+                cursor: pointer;
+            }
+        }
+
+        .title {
+            font-size: 56px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-family: serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .showProducts {
+            margin-top: 50px;
+            margin-bottom: 100px;
+            padding: 12px 24px;
+            font-size: 24px;
+            border: 4px solid $text;
+            border-radius: 4px;
+        }
+
+        .showProducts:hover {
+            color: $textHover;
+            border-color: $textHover;
+            cursor: pointer;
+        }
     }
 }
