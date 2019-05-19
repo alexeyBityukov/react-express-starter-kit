@@ -1,6 +1,8 @@
 @import '../static/styles/colors.module';
+@import '../static/styles/resolutions.module';
 
 .root {
+    overflow: hidden;
 
     .top {
         position: relative;
@@ -61,6 +63,28 @@
             color: $textHover;
             border-color: $textHover;
             cursor: pointer;
+        }
+    }
+
+    .products {
+        max-width: $maxPageWidth;
+        margin: 0 auto;
+
+        .category {
+
+            .categoryName {
+
+            }
+
+            .productsImages {
+                display: flex;
+
+                .product {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ class MainPage extends Component {
     }
 
     render() {
-        console.log(this.state.products);
+        const { products } = this.state;
 
         return (
             <div className={styles.root}>
@@ -42,8 +42,19 @@ class MainPage extends Component {
                     </div>
                 </div>
                 <div className={styles.products}>
-                    <div>
-                        <div>Женщинам</div>
+                    <div className={styles.category}>
+                        <div className={styles.categoryName}>Женщинам</div>
+                        <div className={styles.productsImages}>
+                            {
+                                products.slice(0, 3).map((value, key) => {
+                                    return (
+                                        <div key={key} className={styles.product}>
+                                            <img src={value.image} alt={value.name} />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
