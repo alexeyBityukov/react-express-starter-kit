@@ -27,6 +27,7 @@ module.exports = function(app) {
     });
 
     app.get(`${apiPath}/products`, function (req, res) {
+        res.set('Access-Control-Allow-Origin', '*');
         const Product = require('../db/models/product');
         Product.find({}).exec(function(err, products) {
             if (err) throw err;
