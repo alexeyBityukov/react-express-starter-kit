@@ -62,6 +62,7 @@ class MainPage extends Component {
                                     return (
                                         <div key={key} className={styles.product}>
                                             <img src={value.image} alt={value.name} />
+                                            <div>{value.name}</div>
                                         </div>
                                     )
                                 })
@@ -76,6 +77,7 @@ class MainPage extends Component {
                                     return (
                                         <div key={key} className={styles.product}>
                                             <img src={value.image} alt={value.name} />
+                                            <div>{value.name}</div>
                                         </div>
                                     )
                                 })
