@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const adidasDuramo9KImage = require('../../static/img/adidasDuramo9K');
+const botVitacciImage = require('../../static/img/botVitacci');
 
 const User = require('./models/user');
 const ShippingAddress = require('./models/shippingAddress');
@@ -52,6 +53,21 @@ const init = function() {
         description: 'Цвет: черный, Российский размер (обуви): 31, Европейский: 32',
         characteristics: {
             color: 'черный',
+            sex: 'мужчина'
+        },
+        comments: [],
+    });
+
+    const botVitacci = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        count: 10,
+        price: 5290,
+        name: 'Ботильоны Vitacci',
+        image: botVitacciImage,
+        description: 'Цвет: бордовый, Российский размер (обуви): 35',
+        characteristics: {
+            color: 'бордовый',
+            sex: 'женщина'
         },
         comments: [],
     });
@@ -75,12 +91,19 @@ const init = function() {
 
     adidasDuramo9K.comments.push(adidasDuramo9KComment._id);
 
+
     ShippingAddress.find(mainCommentatorShippingAddressData, function (err, doc) {
         if(doc.length === 0)
             mainCommentatorShippingAddress.save(errorHandler(saveMainCommentator));
         else
             saveMainCommentator();
     });
+
+    botVitacci.save(errorHandler(saveBotVitacci));
+
+    function saveBotVitacci() {
+        errorHandler(saveMainCommentator);
+    }
 
     function saveMainCommentator() {
         User.find(mainCommentatorData, function (err, doc) {

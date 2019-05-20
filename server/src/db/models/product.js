@@ -9,6 +9,7 @@ const productSchema = mongoose.Schema({
     description: String,
     characteristics: {
       color: String,
+      sex: String,
     },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
