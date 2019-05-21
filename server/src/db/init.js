@@ -4,8 +4,7 @@ const init = function() {
     const User = require('./models/user');
     const ShippingAddress = require('./models/shippingAddress');
 
-    const mainCommentatorShippingAddress = new ShippingAddress({
-        _id: new mongoose.Types.ObjectId(),
+    const mainCommentatorShippingAddressData = {
         country: 'Россия',
         area: 'Мурманская область',
         city: 'город Мурманск',
@@ -13,10 +12,14 @@ const init = function() {
         house: 'дом 31',
         flat: 'квартира 10',
         postCode: '304567',
+    };
+
+    const mainCommentatorShippingAddress = new ShippingAddress({
+        _id: new mongoose.Types.ObjectId(),
+        ...mainCommentatorShippingAddressData
     });
 
-    const mainCommentator = new User({
-        _id: new mongoose.Types.ObjectId(),
+    const mainCommentatorData = {
         name: {
             firstName: 'Ольга',
             lastName: 'Сетчина'
@@ -24,15 +27,30 @@ const init = function() {
         phone: '+79876543210',
         password: 'olgaPassword',
         login: 'olgaLogin',
+    };
+
+    const mainCommentator = new User({
+        _id: new mongoose.Types.ObjectId(),
+        ...mainCommentatorData,
         shippingAddress: mainCommentatorShippingAddress._id
     });
 
     mainCommentatorShippingAddress.user = mainCommentator._id;
 
-    mainCommentatorShippingAddress.save(errorHandler(saveMainCommentator));
+    ShippingAddress.find(mainCommentatorShippingAddressData, function (err, doc) {
+        if(doc.length === 0)
+            mainCommentatorShippingAddress.save(errorHandler(saveMainCommentator));
+        else
+            saveMainCommentator();
+    });
 
     function saveMainCommentator() {
-        mainCommentator.save(errorHandler(function(){console.log('Everything is ok!')}));
+        User.find(mainCommentatorData, function (err, doc) {
+            if(doc.length === 0)
+                mainCommentator.save(errorHandler(function(){console.log('Everything is ok!')}));
+            else
+                (function(){console.log('Everything is ok!')})();
+        });
     }
 
     function errorHandler(callback) {
