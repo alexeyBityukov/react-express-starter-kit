@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const adidasDuramo9KImage = require('../../static/img/adidasDuramo9K');
 const botVitacciImage = require('../../static/img/botVitacci');
+const taccardiImage = require('../../static/img/taccardi');
+const twoeiImage = require('../../static/img/twoe');
+const dinoRicciImage = require('../../static/img/dinoRicciImage');
 
 const User = require('./models/user');
 const ShippingAddress = require('./models/shippingAddress');
@@ -80,6 +83,60 @@ const init = function() {
         comments: [],
     });
 
+    const TACCARDIData = {
+        count: 11,
+        price: 1500,
+        name: 'Босоножки T.TACCARDI',
+        image: taccardiImage,
+        description: 'Цвет: черный, Российский размер (обуви): 38',
+        characteristics: {
+            color: 'черный',
+            sex: 'женщина'
+        }
+    };
+
+    const TACCARDI = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...TACCARDIData,
+        comments: [],
+    });
+
+    const crossTvoeData = {
+        count: 12,
+        price: 3545,
+        name: 'Кроссовки Superdry',
+        image: twoeiImage,
+        description: 'Цвет: белый, Российский размер (обуви): 38',
+        characteristics: {
+            color: 'белый',
+            sex: 'женщина'
+        }
+    };
+
+    const crossTvoe = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...crossTvoeData,
+        comments: [],
+    });
+
+    const DinoRicciData = {
+        count: 13,
+        price: 1180,
+        name: 'Туфли Dino Ricci Select',
+        image: dinoRicciImage,
+        description: 'Цвет: черный, Российский размер (обуви): 37',
+        characteristics: {
+            color: 'черный',
+            sex: 'женщина'
+        }
+    };
+
+    const DinoRicci = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...DinoRicciData,
+        comments: [],
+    });
+
     const adidasDuramo9KCommentData = {
         message: 'Крутые кроссовки! Сыну понравились)',
     };
@@ -115,6 +172,21 @@ const init = function() {
     Product.find(botVitacciData, function (err, doc) {
         if(doc.length === 0)
             botVitacci.save();
+    });
+
+    Product.find(TACCARDIData, function (err, doc) {
+        if(doc.length === 0)
+            TACCARDI.save();
+    });
+
+    Product.find(crossTvoeData, function (err, doc) {
+        if(doc.length === 0)
+            crossTvoe.save();
+    });
+
+    Product.find(DinoRicciData, function (err, doc) {
+        if(doc.length === 0)
+            DinoRicci.save();
     });
 
     Product.find(adidasDuramo9KData, function (err, doc) {
