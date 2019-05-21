@@ -44,8 +44,7 @@ const init = function() {
 
     mainCommentatorShippingAddress.user = mainCommentator._id;
 
-    const adidasDuramo9K = new Product({
-        _id: new mongoose.Types.ObjectId(),
+    const adidasDuramo9KData = {
         count: 10,
         price: 5000,
         name: 'Кроссовки adidas DURAMO 9 K',
@@ -54,12 +53,16 @@ const init = function() {
         characteristics: {
             color: 'черный',
             sex: 'мужчина'
-        },
+        }
+    };
+
+    const adidasDuramo9K = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...adidasDuramo9KData,
         comments: [],
     });
 
-    const botVitacci = new Product({
-        _id: new mongoose.Types.ObjectId(),
+    const botVitacciData = {
         count: 10,
         price: 5290,
         name: 'Ботильоны Vitacci',
@@ -68,16 +71,26 @@ const init = function() {
         characteristics: {
             color: 'бордовый',
             sex: 'женщина'
-        },
+        }
+    };
+
+    const botVitacci = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        ...botVitacciData,
         comments: [],
     });
+
+    const adidasDuramo9KCommentData = {
+        message: 'Крутые кроссовки! Сыну понравились)',
+    };
 
     const adidasDuramo9KComment = new ProductComment({
         _id: new mongoose.Types.ObjectId(),
         user: mainCommentator._id,
-        message: 'Крутые кроссовки! Сыну понравились)',
+        ...adidasDuramo9KCommentData,
         product: adidasDuramo9K._id,
     });
+
 
     const mainCommentatorOrder = new Order({
         _id: new mongoose.Types.ObjectId(),
@@ -99,32 +112,32 @@ const init = function() {
             saveMainCommentator();
     });
 
-    botVitacci.save(errorHandler(saveBotVitacci));
+    Product.find(botVitacciData, function (err, doc) {
+        if(doc.length === 0)
+            botVitacci.save();
+    });
 
-    function saveBotVitacci() {
-        errorHandler(saveMainCommentator);
-    }
+    Product.find(adidasDuramo9KData, function (err, doc) {
+        if(doc.length === 0) {
+            adidasDuramo9K.save();
+            mainCommentatorOrder.save(errorHandler(initComplete));
+        }
+    });
+
 
     function saveMainCommentator() {
         User.find(mainCommentatorData, function (err, doc) {
             if (doc.length === 0)
-                mainCommentator.save(errorHandler(saveAdidasDuramo9K));
-            else
-                saveAdidasDuramo9K();
+                mainCommentator.save();
         });
     }
 
-    function saveAdidasDuramo9K() {
-        adidasDuramo9K.save(errorHandler(saveAdidasDuramo9KComment))
-    }
+    ProductComment.find(adidasDuramo9KCommentData, function (err, doc) {
+        if (doc.length === 0) {
+            adidasDuramo9KComment.save();
+        }
+    });
 
-    function saveAdidasDuramo9KComment() {
-        adidasDuramo9KComment.save(errorHandler(saveMainCommentatorOrder));
-    }
-
-    function saveMainCommentatorOrder() {
-        mainCommentatorOrder.save(errorHandler(initComplete))
-    }
 
     function initComplete() {
         console.log('Db init complete!');
