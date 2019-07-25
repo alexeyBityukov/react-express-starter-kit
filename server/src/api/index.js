@@ -4,7 +4,6 @@ const apiPath = '/api';
 
 module.exports = function(app) {
     app.get(`${apiPath}/*`,function(req, res, next){
-        console.log(req.headers.origin);
         if(req.headers.origin === 'http://localhost:3000' || req.headers.origin === 'http://localhost:5000')
             res.set('Access-Control-Allow-Origin' , req.headers.origin );
         next();
@@ -15,6 +14,30 @@ module.exports = function(app) {
         User.find({}).exec(function(err, users) {
             if (err) throw err;
             res.send(users);
+        });
+    });
+
+    app.get(`${apiPath}/user`, function (req, res) {
+        const User = require('../db/models/user');
+        User.findOne({_id: req.query.id}).exec(function(err, user) {
+            if (err) throw err;
+            res.send(user);
+        });
+    });
+
+    app.get(`${apiPath}/products`, function (req, res) {
+        const Product = require('../db/models/product');
+        Product.find({'characteristics.sex' : req.query.sex}).exec(function(err, products) {
+            if (err) throw err;
+            res.send(products);
+        });
+    });
+
+    app.get(`${apiPath}/product`, function (req, res) {
+        const Product = require('../db/models/product');
+        Product.findOne({_id: req.query.id}).exec(function(err, product) {
+            if (err) throw err;
+            res.send(product);
         });
     });
 };
